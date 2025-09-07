@@ -6,7 +6,6 @@ apply.
 
 ## Scope
 
-Describe the directory or files this `AGENTS.md` covers. For example:
 - `/agents/` – core agent logic
 - `/configs/` – YAML/JSON agent configuration files
 - `/scripts/` – utilities for training, evaluation, or deployment
@@ -19,8 +18,9 @@ Describe the directory or files this `AGENTS.md` covers. For example:
 - Install dependencies:
   pip install -r requirements.txt
 - For reproducibility, also update `requirements.lock` or `poetry.lock`.
+- For AI Agent Functionality: Requires a working internet connection to interact with the Gemini API and Firebase Firestore.
 
-### Common Cases (remove if not needed)
+### Common Cases 
 
 - **LangChain**:
   pip install langchain openai
@@ -48,7 +48,7 @@ Outline how to validate changes. Examples:
 - npm test if JavaScript utilities are included
 - Integration tests for end-to-end agent workflows (`tests/integration/`)
 
-### Common Cases (remove if not needed)
+### Common Cases
 
 - **Mocking LLMs** – use fixtures to stub API calls (`responses`, `vcrpy`, or `pytest-mock`).
 - **Golden Files** – store expected agent outputs in `/tests/golden/`.
@@ -60,7 +60,7 @@ Outline how to validate changes. Examples:
 - Store evaluation scripts under `/evaluation/` and update benchmark results in `EVAL.md`.
 - Use fixed random seeds for reproducibility.
 
-### Common Cases (remove if not needed)
+### Common Cases 
 
 - **LangChain Benchmarks** – see `/evaluation/langchain_eval.py`.
 - **HF Leaderboards** – push metrics to Hugging Face `datasets`.
@@ -73,7 +73,7 @@ Outline how to validate changes. Examples:
 - Document any containerization (e.g., `Dockerfile`) and cloud workflows.
 - Mention orchestration tooling (e.g., `tmux`, `Ray`, `Kubernetes`) if applicable.
 
-### Common Cases (remove if not needed)
+### Common Cases 
 
 - **Streamlit UI**:
   streamlit run ui/app.py
@@ -97,7 +97,7 @@ Outline how to validate changes. Examples:
 - Use `logging` instead of `print` for consistent logs.
 - Keep configuration values in `.yaml` or `.json` files—avoid hard-coding.
 
-### Common Cases (remove if not needed)
+### Common Cases )
 
 - **Logging**: use `structlog` or `loguru` for structured logging.
 - **Telemetry**: integrate with `wandb`, `mlflow`, or `tensorboard`.
