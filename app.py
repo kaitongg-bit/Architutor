@@ -1,24 +1,13 @@
 import streamlit as st
 import google.generativeai as genai
-from google.colab import userdata
-# Note: IPython.display is not needed in a Streamlit app
-# import io # Not typically needed for text input/output in Streamlit
-# import pandas as pd # Only needed if you want to display data in a DataFrame in Streamlit
+# Note: google.colab is not needed in a Streamlit app deployed on Streamlit Cloud
 
 # Configure the Google Generative AI client
-# Streamlit apps run on a web server, not directly in the Colab notebook interactive cells.
-# Accessing userdata directly in the Streamlit script might require a different approach
-# or ensuring the environment where Streamlit runs has access to the secrets.
-# For simplicity in a Colab context, we assume userdata works when run via `!streamlit run`.
 try:
-    # Accessing secrets in Streamlit in Colab might need specific handling
-    # if userdata.get() doesn't work directly when run via !streamlit run.
-    # A more robust way might involve passing the key as an environment variable
-    # when running the streamlit app. However, let's try userdata first as it's
-    # common in Colab examples.
-    GOOGLE_API_KEY = userdata.get('GOOGLE_API_KEY')
+    # Accessing secrets in Streamlit Cloud
+    GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
     if not GOOGLE_API_KEY:
-         st.error("Google API Key not found. Please set GOOGLE_API_KEY in Colab Secrets.")
+         st.error("Google API Key not found. Please set GOOGLE_API_KEY in Streamlit Secrets.")
          ai_model = None
     else:
         genai.configure(api_key=GOOGLE_API_KEY)
@@ -27,7 +16,7 @@ try:
         st.success("Google Generative AI model initialized successfully.")
 except Exception as e:
     st.error(f"Error initializing Google Generative AI model: {e}")
-    st.warning("Please ensure your GOOGLE_API_KEY is set correctly in Colab Secrets.")
+    st.warning("Please ensure your GOOGLE_API_KEY is set correctly in Streamlit Secrets.")
     ai_model = None # Set ai_model to None if initialization fails
 
 # Define get_ai_response
